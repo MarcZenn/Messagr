@@ -1,0 +1,24 @@
+{
+  "name": "messagr",
+  "version": "1.0.0",
+  "description": "Level Up Your Life",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcZenn/Messagr.git"
+  },
+  "author": "Marc Zenn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcZenn/Messagr/issues"
+  },
+  "homepage": "https://github.com/MarcZenn/Messagr#readme",
+  "devDependencies": {
+    "babel-loader": "^5.3.3",
+    "react": "^15.0.1",
+    "webpack": "^1.12.15"
+  }
+}
