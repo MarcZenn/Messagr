@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 
 // Components should get everything they need (functionality) passed to it as an object property. See .propTypes syntax below.
 class Channel extends Component {
-  // React render function to render the element markup.
   render(){
     const {channel} = this.props; // Pull the channel object from .propTypes into a constant(a read only variable).
     return(
@@ -24,10 +23,8 @@ class Channel extends Component {
 
 // .propTypes below is a way to declare everything a Component needs as an object then passing it to the Component. This includes the type of data it should expect and if it is required or not. To define this set static property on the Component. call it propTypes..
 Channel.propTypes = {
-  // Consider what properties the child elements use.
   channel: React.PropTypes.object.isRequired,
   setChannel: React.PropTypes.func.isRequired
 }
 
-// export the Component to be used by other Components.
 export default Channel
