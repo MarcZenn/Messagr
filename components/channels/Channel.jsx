@@ -1,7 +1,7 @@
 // Include react in order to use it along with the Component class seperately.
 import React, {Component} from 'react';
 
-// Components should get everything they need (functionality) passed to it as an object property. See .propTypes syntax below.
+// Components should get everything they need (functionality) passed to it as an object property. See .propTypes syntax below. 
 class Channel extends Component {
   render(){
     const {channel} = this.props; // Pull the channel object from .propTypes into a constant(a read only variable).
