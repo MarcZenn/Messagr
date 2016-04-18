@@ -20,5 +20,8 @@
     "babel-loader": "^5.3.3",
     "react": "^15.0.1",
     "webpack": "^1.12.15"
+  },
+  "dependencies": {
+    "react-dom": "^15.0.1"
   }
 }

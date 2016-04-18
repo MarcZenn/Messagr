@@ -15,7 +15,6 @@ class ChannelForm extends Component {
     // Access the value of the input field by setting the input 'ref' attr to channel as seen above. Then reference that ref attr by setting it to a variable. Then extract that variables value (the actual input value) by setting it to another variable.
     const node = this.refs.channel;
     const channelName = node.value;
-    console.log(channelName);
     this.props.addChannel(channelName);
     node.value = '';
   }

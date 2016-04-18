@@ -5,19 +5,19 @@ import React, {Component} from 'react';
 import Channel from './Channel.jsx';
 
 class ChannelList extends Component{
-  render() {
+  render(){
     const {channels} = this.props;
     return(
-      // Just like any view template languagte. To render the li's you must loop over the channels array from .propTypes below (using map function in this case) and return the Channel Component as an <li> for each array element. (an array of objects)
-      <ul>
-        {
-          channels.map(chan => // Fat-arrow just means callback: function() {....}
-          {
-              // Provide the properties that the Channel component is expecting? I believe {chan} is the same as this.props.channel...
-              <Channel channel={chan} setChannel={this.props.setChannel} />
-          })
-        }
-      </ul>
+      <ul>{
+        channels.map( chan => {
+          return (
+            <Channel
+            channel={chan}
+            setChannel={this.props.setChannel}
+            />
+          );
+        })
+      }</ul>
     )
   }
 }

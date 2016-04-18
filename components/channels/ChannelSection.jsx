@@ -7,12 +7,12 @@ import ChannelForm from './ChannelForm.jsx';
 import ChannelList from './ChannelList.jsx';
 
 // This is the outermost component of the channels section but App.jsx is the parent of all front-end components. Thus App.jsx will maintain state as is good practice.
-class ChannelSection extens Component{
+class ChannelSection extends Component{
   render(){
     return(
       // pass the required props to the child Components.
       <div>
-        <ChannelList channel={this.props.channel} setChannel={this.props.setChannel}/>
+        <ChannelList channels={this.props.channels} setChannel={this.props.setChannel}/>
         <ChannelForm addChannel={this.props.addChannel}/>
       </div>
     )
