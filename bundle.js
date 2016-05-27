@@ -20067,14 +20067,15 @@
 	    // This initiates the state object.
 	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this, props);
 	    this.state = {
-	      channels: []
+	      channels: [],
+	      activeChannel: {} // New!
 	    };
 	  }
 
 	  // While the App Component is the outermost parent Component and will maintain state, it will not actually be receiving any properties (of its children or its own properties) since it wont actually be serving any functionality. Thus there is no need to definte properties to .propTypes...
 
 	  /*
-	    | Build Process and Dev Server:
+	    | Webpack Build Process and Dev Server:
 	    |-------------------------------------------------------------------------
 	    | 1.To initiate build process run: 'wepack'
 	    | 2.To initiate dev server run: 'webpack-dev-server --hot --inline'
@@ -20084,16 +20085,23 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement(_channelsChannelSectionJsx2['default'], { setChannel: this.setChannel.bind(this), addChannel: this.addChannel.bind(this), channels: this.state.channels })
+	      return(
+	        // When adding class selectors to elements for styling, you cannot use the word 'class' as it is a JS keyword. Instead you must use className.
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'app' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'nav' },
+	            _react2['default'].createElement(_channelsChannelSectionJsx2['default'], { addChannel: this.addChannel.bind(this), setChannel: this.setChannel.bind(this), channels: this.state.channels })
+	          )
+	        )
 	      );
 	    }
 	  }, {
 	    key: 'addChannel',
 	    value: function addChannel(name) {
-	      var channels = this.props.channels;
+	      var channels = this.state.channels;
 
 	      channels.push({ id: channels.length, name: name });
 	      this.setState({ channels: channels });
@@ -20170,7 +20178,7 @@
 	        _react2['default'].createElement(
 	          'div',
 	          null,
-	          _react2['default'].createElement(_ChannelListJsx2['default'], { channel: this.props.channel, setChannel: this.props.setChannel }),
+	          _react2['default'].createElement(_ChannelListJsx2['default'], { channels: this.props.channels, setChannel: this.props.setChannel }),
 	          _react2['default'].createElement(_ChannelFormJsx2['default'], { addChannel: this.props.addChannel })
 	        )
 	      );
@@ -20244,7 +20252,6 @@
 	      // Access the value of the input field by setting the input 'ref' attr to channel as seen above. Then reference that ref attr by setting it to a variable. Then extract that variables value (the actual input value) by setting it to another variable.
 	      var node = this.refs.channel;
 	      var channelName = node.value;
-	      console.log(channelName);
 	      this.props.addChannel(channelName);
 	      node.value = '';
 	    }
@@ -20307,11 +20314,19 @@
 	    value: function render() {
 	      var _this = this;
 
+	      var channels = this.props.channels;
+
 	      return _react2['default'].createElement(
 	        'ul',
 	        null,
-	        this.props.channels.map(function (chan) {
-	          return _react2['default'].createElement(_ChannelJsx2['default'], { channel: chan, setChannel: _this.props.setChannel });
+
+	        // Loop over the Channels array from .propTypes below and return a Channel Component for each i as an <li> (i in this case is named 'chan'). You also need to add a unique key to sibling Channel Component. This is so that React can do optimized DOM manipulations later on and differentiate siblings.
+	        channels.map(function (chan) {
+	          return _react2['default'].createElement(_ChannelJsx2['default'], {
+	            key: chan.id,
+	            channel: chan,
+	            setChannel: _this.props.setChannel
+	          });
 	        })
 	      );
 	    }

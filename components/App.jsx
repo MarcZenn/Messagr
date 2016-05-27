@@ -18,7 +18,12 @@ class App extends Component {
   }
   render(){
     return (
-        <ChannelSection addChannel={this.addChannel.bind(this)}   setChannel={this.setChannel.bind(this)}  channels={this.state.channels}/>
+      // When adding class selectors to elements for styling, you cannot use the word 'class' as it is a JS keyword. Instead you must use className.
+      <div className="app">
+        <div className="nav">
+          <ChannelSection addChannel={this.addChannel.bind(this)}   setChannel={this.setChannel.bind(this)}  channels={this.state.channels}/>
+        </div>
+      </div>
     )
   }
   addChannel(name){

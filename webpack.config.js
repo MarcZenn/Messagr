@@ -15,6 +15,6 @@ module.exports = {
         loader: 'babel-loader', // Loader to be used. Must be installed.
         exclude: /node_modules/ // exclude node modules.
       }
-  ]
+    ]
   }
 }
