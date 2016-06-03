@@ -9,7 +9,7 @@ class ChannelList extends Component{
     const {channels} = this.props;
     return(
       <ul>{
-        // Loop over the Channels [array] from .propTypes below and return a Channel Component for each element of the [array] as an <li> ([i] in this case is named 'chan'). You also need to add a unique key to sibling Channel Component. This is so that React can do optimized DOM manipulations later on and differentiate siblings.
+        // Loop over the Channels [array] from .propTypes below and return a Channel Component for each element of the [array] as an <li> ([i] in this case is named 'chan'). You also need to add a unique key to sibling Channel Component. This is so that React can do optimized DOM manipulations later on and differentiate siblings. The key property is needed in siblings components so that React can do optimized DOM manipulations and differentiate between siblings.
         channels.map( chan => {
           return (
             <Channel key={chan.id} channel={chan} setChannel={this.props.setChannel} />

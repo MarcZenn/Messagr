@@ -53,7 +53,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	// Import the react dom which we will use to render our React Component into the DOM. Make sure react-dom is installed in package.json.
+	// Import the react dom which we will use to render our React Component into the DOM. Make sure react-dom is npn installed and saved in package.json.
 
 	var _reactDom = __webpack_require__(32);
 
@@ -65,7 +65,7 @@
 
 	var _componentsAppJsx2 = _interopRequireDefault(_componentsAppJsx);
 
-	// Tell the React virtual DOM where to mount the App Component.
+	// Tell the React virtual DOM (react dom) where to mount the App Component.
 	_reactDom2['default'].render(_react2['default'].createElement(_componentsAppJsx2['default'], null), document.getElementById('root'));
 
 /***/ },
@@ -20049,10 +20049,11 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	// Include the ChannelSection Component which carries with it all other Components. See ChannelSection.jsx.
+	// import ChannelSection from './channels/ChannelSection.jsx';
 
-	var _channelsChannelSectionJsx = __webpack_require__(167);
+	var _SideNavJsx = __webpack_require__(167);
 
-	var _channelsChannelSectionJsx2 = _interopRequireDefault(_channelsChannelSectionJsx);
+	var _SideNavJsx2 = _interopRequireDefault(_SideNavJsx);
 
 	// Since App is the outermost Component, it's a good place to maintain state. So for example, the channels array from the ChannelList Component is a variable type of 'array' and we will store that in the App Component's state. BUT FIRST you need to initialize the state object, otherwise you won't be able to access it since it won't exist. To do this you must create a constructor that calls its parents objects?
 
@@ -20064,10 +20065,10 @@
 	  function App(props) {
 	    _classCallCheck(this, App);
 
-	    // This initiates the state object.
+	    // This initializes the state object. Otherwise we'll get an error when we try to access channels from a state object tha doesn't exist yet.
 	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this, props);
 	    this.state = {
-	      channels: [],
+	      channels: [], // New!
 	      activeChannel: {} // New!
 	    };
 	  }
@@ -20077,7 +20078,7 @@
 	  /*
 	    | Webpack Build Process and Dev Server:
 	    |-------------------------------------------------------------------------
-	    | 1.To initiate build process run: 'wepack'
+	    | 1.To initiate build process run: 'webpack'
 	    | 2.To initiate dev server run: 'webpack-dev-server --hot --inline'
 	    |-------------------------------------------------------------------------
 	  */
@@ -20093,7 +20094,7 @@
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'nav' },
-	            _react2['default'].createElement(_channelsChannelSectionJsx2['default'], { addChannel: this.addChannel.bind(this), setChannel: this.setChannel.bind(this), channels: this.state.channels })
+	            _react2['default'].createElement(_SideNavJsx2['default'], { addChannel: this.addChannel.bind(this), setChannel: this.setChannel.bind(this), channels: this.state.channels })
 	          )
 	        )
 	      );
@@ -20105,7 +20106,7 @@
 
 	      channels.push({ id: channels.length, name: name });
 	      this.setState({ channels: channels });
-	      // TODO: send to server..
+	      // TODO: send to server and update data..
 	    }
 	  }, {
 	    key: 'setChannel',
@@ -20120,9 +20121,71 @@
 
 	exports['default'] = App;
 	module.exports = exports['default'];
+	/*<ChannelSection addChannel={this.addChannel.bind(this)}   setChannel={this.setChannel.bind(this)}  channels={this.state.channels}/>*/
 
 /***/ },
 /* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _channelsChannelSectionJsx = __webpack_require__(168);
+
+	var _channelsChannelSectionJsx2 = _interopRequireDefault(_channelsChannelSectionJsx);
+
+	var SideNav = (function (_Component) {
+	  _inherits(SideNav, _Component);
+
+	  function SideNav() {
+	    _classCallCheck(this, SideNav);
+
+	    _get(Object.getPrototypeOf(SideNav.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(SideNav, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'sidenav-container' },
+	        _react2['default'].createElement(_channelsChannelSectionJsx2['default'], { channels: this.props.channels, setChannel: this.props.setChannel,
+	          addChannel: this.props.addChannel })
+	      );
+	    }
+	  }]);
+
+	  return SideNav;
+	})(_react.Component);
+
+	SideNav.propTypes = {
+	  channels: _react2['default'].PropTypes.array.isRequired,
+	  addChannel: _react2['default'].PropTypes.func.isRequired,
+	  setChannel: _react2['default'].PropTypes.func.isRequired
+	};
+
+	exports['default'] = SideNav;
+	module.exports = exports['default'];
+
+/***/ },
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Include React in order to use it along with the Component class seperately.
@@ -20149,11 +20212,11 @@
 	// Import the child Components of this Component. Notice that the Channel Component is not imported
 	// since it is a dependency of ChannelList Component and thus already imported along with it.
 
-	var _ChannelFormJsx = __webpack_require__(168);
+	var _ChannelFormJsx = __webpack_require__(169);
 
 	var _ChannelFormJsx2 = _interopRequireDefault(_ChannelFormJsx);
 
-	var _ChannelListJsx = __webpack_require__(169);
+	var _ChannelListJsx = __webpack_require__(170);
 
 	var _ChannelListJsx2 = _interopRequireDefault(_ChannelListJsx);
 
@@ -20198,7 +20261,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Include React in order to use it along with the Component class seperately.
@@ -20221,6 +20284,8 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	// Purpose of this Component form is to allow users to add new channels.
 
 	var ChannelForm = (function (_Component) {
 	  _inherits(ChannelForm, _Component);
@@ -20268,7 +20333,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Include React in order to use it along with the Component class seperately.
@@ -20294,7 +20359,7 @@
 
 	//Import Channel component from Channel.jsx to be used by ChannelList Component.
 
-	var _ChannelJsx = __webpack_require__(170);
+	var _ChannelJsx = __webpack_require__(171);
 
 	var _ChannelJsx2 = _interopRequireDefault(_ChannelJsx);
 
@@ -20320,13 +20385,9 @@
 	        'ul',
 	        null,
 
-	        // Loop over the Channels array from .propTypes below and return a Channel Component for each i as an <li> (i in this case is named 'chan'). You also need to add a unique key to sibling Channel Component. This is so that React can do optimized DOM manipulations later on and differentiate siblings.
+	        // Loop over the Channels [array] from .propTypes below and return a Channel Component for each element of the [array] as an <li> ([i] in this case is named 'chan'). You also need to add a unique key to sibling Channel Component. This is so that React can do optimized DOM manipulations later on and differentiate siblings. The key property is needed in siblings components so that React can do optimized DOM manipulations and differentiate between siblings.
 	        channels.map(function (chan) {
-	          return _react2['default'].createElement(_ChannelJsx2['default'], {
-	            key: chan.id,
-	            channel: chan,
-	            setChannel: _this.props.setChannel
-	          });
+	          return _react2['default'].createElement(_ChannelJsx2['default'], { key: chan.id, channel: chan, setChannel: _this.props.setChannel });
 	        })
 	      );
 	    }
@@ -20345,10 +20406,10 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// Include react in order to use it along with the Component class seperately.
+	// Include react in order to use it. Also include React's Component class seperately (optional) to use it.
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -20369,7 +20430,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	// Components should get everything they need (functionality) passed to it as an object property. See .propTypes syntax below.
+	// Components (Object Class) should get everything they need (functionality) passed to it as an object property. See .propTypes syntax below.
 
 	var Channel = (function (_Component) {
 	  _inherits(Channel, _Component);
@@ -20380,7 +20441,7 @@
 	    _get(Object.getPrototypeOf(Channel.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  // .propTypes below is a way to declare everything a Component needs as an object then passing it to the Component. This includes the type of data it should expect and if it is required or not. To define this set static property on the Component. call it propTypes..
+	  // .propTypes is a static property on the Component Class and is a way to declare everything a Component needs as an object which then gets inherited by the Component. This includes the type of data it should expect and if it is required or not. It also sheds light on how the componnet should be used.
 
 	  _createClass(Channel, [{
 	    key: 'render',

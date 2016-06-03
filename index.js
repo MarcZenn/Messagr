@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 // Import the App Component.
 import App from './components/App.jsx';
 
-// Tell the React virtual DOM where to mount the App Component.
+// Tell the React virtual DOM (react dom) where to mount the App Component.
 ReactDOM.render(
   <App />,
   document.getElementById('root')
