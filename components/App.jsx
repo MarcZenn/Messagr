@@ -9,10 +9,10 @@ import ChannelSection from './channels/ChannelSection.jsx';
 class App extends Component {
   // The super keyword is used to call functions on an object's parent. You cannot use the keyword 'this' until you first call super() which calls the parents object functions. For an example reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
   constructor(props){
-    // This initiates the state object.
+    // This initializes the state object.
     super(props);
     this.state = {
-      channels: [],
+      channels: [], // New!
       activeChannel: {} // New!
     };
   }

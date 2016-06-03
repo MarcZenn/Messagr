@@ -21,7 +21,7 @@ class Channel extends Component {
   }
 }
 
-// .propTypes is a way to declare everything a Component needs as an object which then gets inherited by the Component. This includes the type of data it should expect and if it is required or not. To define this set static property on the Component. call it propTypes..
+// .propTypes is a static property on the Component Class and is a way to declare everything a Component needs as an object which then gets inherited by the Component. This includes the type of data it should expect and if it is required or not. It also sheds light on how the componnet should be used. 
 Channel.propTypes = {
   channel: React.PropTypes.object.isRequired,
   setChannel: React.PropTypes.func.isRequired

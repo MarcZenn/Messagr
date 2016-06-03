@@ -1,6 +1,8 @@
 // Include React in order to use it along with the Component class seperately.
 import React, {Component} from 'react';
 
+
+// Purpose of this Component form is to allow users to add new channels. 
 class ChannelForm extends Component {
   render() {
     return(
