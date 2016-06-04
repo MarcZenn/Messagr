@@ -17,3 +17,30 @@
   padding: 10px;
   box-sizing: border-box;
 }
+
+.channel-list{
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+}
+
+.channel-list li{
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: left;
+
+}
+
+.channel-list li:hover{
+  background-color: white;
+}
+
+.channel-list li a:hover{
+  cursor: default;
+}
+
+.active{
+  background-color: pink;
+}

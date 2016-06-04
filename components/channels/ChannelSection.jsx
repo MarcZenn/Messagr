@@ -13,7 +13,7 @@ class ChannelSection extends Component{
       // pass the required props to the child Components.
       <section className="channel-section">
         <h1>User Name</h1>
-        <ChannelList channels={this.props.channels} setChannel={this.props.setChannel}/>
+        <ChannelList channels={this.props.channels} setChannel={this.props.setChannel} activeChannel={this.props.activeChannel}/>
         <ChannelForm addChannel={this.props.addChannel}/>
       </section>
     )
@@ -25,7 +25,8 @@ class ChannelSection extends Component{
 ChannelSection.propTypes = {
   channels: React.PropTypes.array.isRequired,
   addChannel: React.PropTypes.func.isRequired,
-  setChannel: React.PropTypes.func.isRequired
+  setChannel: React.PropTypes.func.isRequired,
+  activeChannel: React.PropTypes.object.isRequired
 }
 
 export default ChannelSection

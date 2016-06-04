@@ -4,9 +4,10 @@ import React, {Component} from 'react';
 // Components (Object Class) should get everything they need (functionality) passed to it as an object property. See .propTypes syntax below.
 class Channel extends Component {
   render(){
-    const {channel} = this.props; // Pull the channel object from .propTypes into a constant(a read only variable).
+    const {channel, activeChannel} = this.props; // Pull the channel object from .propTypes into a constant(a read only variable).
+    const active = channel  === activeChannel ? 'active' : '';
     return(
-      <li>
+      <li className={active}>
         <a onClick={this.onClick.bind(this)}>
           {channel.name}
         </a>
@@ -21,10 +22,11 @@ class Channel extends Component {
   }
 }
 
-// .propTypes is a static property on the Component Class and is a way to declare everything a Component needs as an object which then gets inherited by the Component. This includes the type of data it should expect and if it is required or not. It also sheds light on how the componnet should be used. 
+// .propTypes is a static property on the Component Class and is a way to declare everything a Component needs as an object which then gets inherited by the Component. This includes the type of data it should expect and if it is required or not. It also sheds light on how the componnet should be used.
 Channel.propTypes = {
   channel: React.PropTypes.object.isRequired,
-  setChannel: React.PropTypes.func.isRequired
+  setChannel: React.PropTypes.func.isRequired,
+  activeChannel: React.PropTypes.object.isRequired
 }
 
 

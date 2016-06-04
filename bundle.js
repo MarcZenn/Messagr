@@ -20048,8 +20048,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	// Include the ChannelSection Component which carries with it all other Components. See ChannelSection.jsx.
-	// import ChannelSection from './channels/ChannelSection.jsx';
+	// Include the SideNav Component which carries with it all other Components. See SideNav.jsx.
 
 	var _SideNavJsx = __webpack_require__(167);
 
@@ -20089,12 +20088,12 @@
 	      return(
 	        // When adding class selectors to elements for styling, you cannot use the word 'class' as it is a JS keyword. Instead you must use className.
 	        _react2['default'].createElement(
-	          'div',
+	          'section',
 	          { className: 'app' },
 	          _react2['default'].createElement(
-	            'div',
+	            'section',
 	            { className: 'nav' },
-	            _react2['default'].createElement(_SideNavJsx2['default'], { addChannel: this.addChannel.bind(this), setChannel: this.setChannel.bind(this), channels: this.state.channels })
+	            _react2['default'].createElement(_SideNavJsx2['default'], { addChannel: this.addChannel.bind(this), setChannel: this.setChannel.bind(this), channels: this.state.channels, activeChannel: this.props.activeChannel })
 	          )
 	        )
 	      );
@@ -20121,7 +20120,6 @@
 
 	exports['default'] = App;
 	module.exports = exports['default'];
-	/*<ChannelSection addChannel={this.addChannel.bind(this)}   setChannel={this.setChannel.bind(this)}  channels={this.state.channels}/>*/
 
 /***/ },
 /* 167 */
@@ -20164,10 +20162,10 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
-	        'div',
+	        'section',
 	        { className: 'sidenav-container' },
 	        _react2['default'].createElement(_channelsChannelSectionJsx2['default'], { channels: this.props.channels, setChannel: this.props.setChannel,
-	          addChannel: this.props.addChannel })
+	          addChannel: this.props.addChannel, activeChannel: this.props.activeChannel })
 	      );
 	    }
 	  }]);
@@ -20178,7 +20176,8 @@
 	SideNav.propTypes = {
 	  channels: _react2['default'].PropTypes.array.isRequired,
 	  addChannel: _react2['default'].PropTypes.func.isRequired,
-	  setChannel: _react2['default'].PropTypes.func.isRequired
+	  setChannel: _react2['default'].PropTypes.func.isRequired,
+	  activeChannel: _react2['default'].PropTypes.object.isRequired
 	};
 
 	exports['default'] = SideNav;
@@ -20239,9 +20238,14 @@
 	      return(
 	        // pass the required props to the child Components.
 	        _react2['default'].createElement(
-	          'div',
-	          null,
-	          _react2['default'].createElement(_ChannelListJsx2['default'], { channels: this.props.channels, setChannel: this.props.setChannel }),
+	          'section',
+	          { className: 'channel-section' },
+	          _react2['default'].createElement(
+	            'h1',
+	            null,
+	            'User Name'
+	          ),
+	          _react2['default'].createElement(_ChannelListJsx2['default'], { channels: this.props.channels, setChannel: this.props.setChannel, activeChannel: this.props.activeChannel }),
 	          _react2['default'].createElement(_ChannelFormJsx2['default'], { addChannel: this.props.addChannel })
 	        )
 	      );
@@ -20254,7 +20258,8 @@
 	ChannelSection.propTypes = {
 	  channels: _react2['default'].PropTypes.array.isRequired,
 	  addChannel: _react2['default'].PropTypes.func.isRequired,
-	  setChannel: _react2['default'].PropTypes.func.isRequired
+	  setChannel: _react2['default'].PropTypes.func.isRequired,
+	  activeChannel: _react2['default'].PropTypes.object.isRequired
 	};
 
 	exports['default'] = ChannelSection;
@@ -20265,21 +20270,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// Include React in order to use it along with the Component class seperately.
-	'use strict';
+	"use strict";
 
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(1);
 
@@ -20293,25 +20298,25 @@
 	  function ChannelForm() {
 	    _classCallCheck(this, ChannelForm);
 
-	    _get(Object.getPrototypeOf(ChannelForm.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(ChannelForm.prototype), "constructor", this).apply(this, arguments);
 	  }
 
 	  // .propTypes below is a way to declare everything a Component needs as an object prop then passing them to the Component. This includes the type of data it should expect and if it is required or not. To define this set static property on the Component called .propTypes.
 
 	  _createClass(ChannelForm, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return(
 	        // React has special prop called 'Ref' which allow you to assign a unique reference to a DOM element. You can then access that DOM element node with dot notation. Useful for forms and less verbose than using state. See input attr below.
-	        _react2['default'].createElement(
-	          'form',
+	        _react2["default"].createElement(
+	          "form",
 	          { onSubmit: this.onSubmit.bind(this) },
-	          _react2['default'].createElement('input', { type: 'text', ref: 'channel' })
+	          _react2["default"].createElement("input", { className: "add-channel-input", placeholder: "add channel", type: "text", ref: "channel" })
 	        )
 	      );
 	    }
 	  }, {
-	    key: 'onSubmit',
+	    key: "onSubmit",
 	    value: function onSubmit(e) {
 	      e.preventDefault();
 	      // Access the value of the input field by setting the input 'ref' attr to channel as seen above. Then reference that ref attr by setting it to a variable. Then extract that variables value (the actual input value) by setting it to another variable.
@@ -20326,11 +20331,11 @@
 	})(_react.Component);
 
 	ChannelForm.propTypes = {
-	  addChannel: _react2['default'].PropTypes.func.isRequired
+	  addChannel: _react2["default"].PropTypes.func.isRequired
 	};
 
-	exports['default'] = ChannelForm;
-	module.exports = exports['default'];
+	exports["default"] = ChannelForm;
+	module.exports = exports["default"];
 
 /***/ },
 /* 170 */
@@ -20383,11 +20388,11 @@
 
 	      return _react2['default'].createElement(
 	        'ul',
-	        null,
+	        { className: 'channel-list' },
 
 	        // Loop over the Channels [array] from .propTypes below and return a Channel Component for each element of the [array] as an <li> ([i] in this case is named 'chan'). You also need to add a unique key to sibling Channel Component. This is so that React can do optimized DOM manipulations later on and differentiate siblings. The key property is needed in siblings components so that React can do optimized DOM manipulations and differentiate between siblings.
 	        channels.map(function (chan) {
-	          return _react2['default'].createElement(_ChannelJsx2['default'], { key: chan.id, channel: chan, setChannel: _this.props.setChannel });
+	          return _react2['default'].createElement(_ChannelJsx2['default'], { key: chan.id, channel: chan, setChannel: _this.props.setChannel, activeChannel: _this.props.activeChannel });
 	        })
 	      );
 	    }
@@ -20399,7 +20404,8 @@
 	ChannelList.propTypes = {
 	  // Consider what properties the child elements use.
 	  channels: _react2['default'].PropTypes.array.isRequired,
-	  setChannel: _react2['default'].PropTypes.func.isRequired
+	  setChannel: _react2['default'].PropTypes.func.isRequired,
+	  activeChannel: _react2['default'].PropTypes.object.isRequired
 	};
 
 	exports['default'] = ChannelList;
@@ -20446,11 +20452,14 @@
 	  _createClass(Channel, [{
 	    key: 'render',
 	    value: function render() {
-	      var channel = this.props.channel;
+	      var _props = this.props;
+	      var channel = _props.channel;
+	      var activeChannel = _props.activeChannel;
 	      // Pull the channel object from .propTypes into a constant(a read only variable).
+	      var active = channel === activeChannel ? 'active' : '';
 	      return _react2['default'].createElement(
 	        'li',
-	        null,
+	        { className: active },
 	        _react2['default'].createElement(
 	          'a',
 	          { onClick: this.onClick.bind(this) },
@@ -20463,9 +20472,9 @@
 	    value: function onClick(e) {
 	      e.preventDefault();
 	      // Pull in setChannel and Channel out of .propTypes below into their own constants(read only variables) so you can use them.
-	      var _props = this.props;
-	      var setChannel = _props.setChannel;
-	      var channel = _props.channel;
+	      var _props2 = this.props;
+	      var setChannel = _props2.setChannel;
+	      var channel = _props2.channel;
 
 	      setChannel(channel);
 	    }
@@ -20476,7 +20485,8 @@
 
 	Channel.propTypes = {
 	  channel: _react2['default'].PropTypes.object.isRequired,
-	  setChannel: _react2['default'].PropTypes.func.isRequired
+	  setChannel: _react2['default'].PropTypes.func.isRequired,
+	  activeChannel: _react2['default'].PropTypes.object.isRequired
 	};
 
 	exports['default'] = Channel;

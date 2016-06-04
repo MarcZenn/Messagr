@@ -8,7 +8,7 @@ class SideNav extends Component {
     return(
       <section className="sidenav-container">
         <ChannelSection  channels={this.props.channels} setChannel={this.props.setChannel}
-        addChannel={this.props.addChannel}/>
+        addChannel={this.props.addChannel} activeChannel={this.props.activeChannel}/>
       </section>
     )
   }
@@ -18,7 +18,8 @@ class SideNav extends Component {
 SideNav.propTypes = {
   channels: React.PropTypes.array.isRequired,
   addChannel: React.PropTypes.func.isRequired,
-  setChannel: React.PropTypes.func.isRequired
+  setChannel: React.PropTypes.func.isRequired,
+  activeChannel: React.PropTypes.object.isRequired
 }
 
 
