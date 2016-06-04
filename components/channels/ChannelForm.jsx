@@ -2,13 +2,13 @@
 import React, {Component} from 'react';
 
 
-// Purpose of this Component form is to allow users to add new channels. 
+// Purpose of this Component form is to allow users to add new channels.
 class ChannelForm extends Component {
   render() {
     return(
       // React has special prop called 'Ref' which allow you to assign a unique reference to a DOM element. You can then access that DOM element node with dot notation. Useful for forms and less verbose than using state. See input attr below.
       <form onSubmit={this.onSubmit.bind(this)}>
-        <input type='text' ref="channel"/>
+        <input className="add-channel-input" placeholder="add channel" type='text' ref="channel"/>
       </form>
     )
   }

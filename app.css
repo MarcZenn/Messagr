@@ -1,5 +1,19 @@
 .sidenav-container{
-  width: 35%;
-  background-color: lightgrey;
+  width: 20%;
+  background-color: purple;
   padding: 20px;
+  height: 100%;
+}
+
+.channel-section{
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  padding: 10px 0;
+}
+
+.add-channel-input{
+  margin: 0 auto;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 }

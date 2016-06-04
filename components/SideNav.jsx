@@ -6,10 +6,10 @@ import ChannelSection from './channels/ChannelSection.jsx';
 class SideNav extends Component {
   render() {
     return(
-      <div className="sidenav-container">
+      <section className="sidenav-container">
         <ChannelSection  channels={this.props.channels} setChannel={this.props.setChannel}
         addChannel={this.props.addChannel}/>
-      </div>
+      </section>
     )
   }
 }

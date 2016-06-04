@@ -1,9 +1,7 @@
 // Include React in order to use it along with the Component class seperately.
 import React, {Component} from 'react';
 
-// Include the ChannelSection Component which carries with it all other Components. See ChannelSection.jsx.
-// import ChannelSection from './channels/ChannelSection.jsx';
-
+// Include the SideNav Component which carries with it all other Components. See SideNav.jsx.
 import SideNav from './SideNav.jsx';
 
 // Since App is the outermost Component, it's a good place to maintain state. So for example, the channels array from the ChannelList Component is a variable type of 'array' and we will store that in the App Component's state. BUT FIRST you need to initialize the state object, otherwise you won't be able to access it since it won't exist. To do this you must create a constructor that calls its parents objects?
@@ -22,7 +20,6 @@ class App extends Component {
       // When adding class selectors to elements for styling, you cannot use the word 'class' as it is a JS keyword. Instead you must use className.
       <div className="app">
         <div className="nav">
-          {/*<ChannelSection addChannel={this.addChannel.bind(this)}   setChannel={this.setChannel.bind(this)}  channels={this.state.channels}/>*/}
           <SideNav addChannel={this.addChannel.bind(this)}   setChannel={this.setChannel.bind(this)}  channels={this.state.channels}/>
         </div>
       </div>

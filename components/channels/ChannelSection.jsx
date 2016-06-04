@@ -11,10 +11,11 @@ class ChannelSection extends Component{
   render(){
     return(
       // pass the required props to the child Components.
-      <div>
+      <section className="channel-section">
+        <h1>User Name</h1>
         <ChannelList channels={this.props.channels} setChannel={this.props.setChannel}/>
         <ChannelForm addChannel={this.props.addChannel}/>
-      </div>
+      </section>
     )
   }
 }
